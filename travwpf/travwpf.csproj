@@ -76,6 +76,7 @@
       <DependentUpon>Prox.xaml</DependentUpon>
     </Compile>
     <Compile Include="Proxy.cs" />
+    <Compile Include="UpgradeWar.cs" />
     <Compile Include="VillClass.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

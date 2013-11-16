@@ -23,9 +23,13 @@ namespace travwpf
     /// </summary>
     public partial class MainWindow : Window
     {
+        List<int> BusyList = new List<int>();
+        List<UpgradeWar> UpgradeWarList = new List<UpgradeWar>();
         Timer BuildTaskTimer = new Timer();
         Timer DemolishTaskTimer = new Timer();
         Timer AntiLogout = new Timer();
+        bool DemolishTimerStop = false;
+        bool BuildTimerStop = false;
         //string Server = "http://sx800.xtravianx.net/";
         string Server = "http://travian-hell.ru/";
         string NavigatedSite = "";
@@ -34,6 +38,7 @@ namespace travwpf
         bool successbuild = false;
         bool BuildTaskProcessed = false;
         bool DemolishTaskProcessed = false;
+        bool UpgradeWarProcessed = false;
         bool WBUsed = false;
         List<VillClass> vills = new List<VillClass>();
         List<BuildTaskClass> LBT = new List<BuildTaskClass>();
@@ -94,7 +99,6 @@ namespace travwpf
                 {
                     logined = true;
                     StartInitAcc.Visibility = System.Windows.Visibility.Visible;
-                    AntiLogout.Start();
                 }
             }
             CheckAdress();
@@ -240,6 +244,7 @@ namespace travwpf
             TIB_D1CI();
             TIB_D2CI();
             GraphInit();
+            BusyListInit();
             BuildTaskListInit();
             DemolishTaskListInit();
             BuildTimerInit();
@@ -249,10 +254,18 @@ namespace travwpf
             TIB_LBV.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             Navigate(Server + "login.php");
         }
+        void BusyListInit()//-1 - не запускалось, 0 - заявка на запуск, 1.. - количество выполнений
+        {
+            BusyList.Add(-1);//build
+            BusyList.Add(-1);//demolish
+            BusyList.Add(-1);//upgrade units
+            BusyList.Add(-1);//celebrations
+        }
         void AntiLogout_Tick(object sender, EventArgs e)
         {
             if(!WBUsed)
                 Navigate(Server + "dorf1.php");
+            System.Windows.MessageBox.Show("asdfasdfasdf");
         }
         void BuildTimerInit()//переписать
         {
@@ -347,6 +360,8 @@ namespace travwpf
         }
         void AccInit()
         {
+            TIOUWALL.Items.Clear();
+            TIOUWS.Items.Clear();
             BuildTaskList.Items.Clear();
             DemolishTaskList.Items.Clear();
             TIB_LBV.Items.Clear();
@@ -431,9 +446,14 @@ namespace travwpf
                 }
                 vills.Add(new VillClass { cap = true, name = name, href = href, newdid = href.Remove(0, (Server + "dorf1.php?newdid=").Length),X = cox,Y = coy, dorf1 = new List<FieldClass>(), dorf2 = new List<CityClass>() });
             }
-            if(vills.Count != 0)
+            if (vills.Count != 0)
+            {
                 for (int i = 0; i < vills.Count; i++)
+                {
                     TIB_LBV.Items.Add(vills[i].name);
+                    TIOUWALL.Items.Add(vills[i].name);
+                }
+            }
             GlobalInit();
             LastBuildTaskInit();
             LastDemolishTaskInit();
@@ -566,6 +586,7 @@ namespace travwpf
         {
             vills[TIB_LBV.SelectedIndex].dorf1 = new List<FieldClass>();
             int counter = 1;
+            if (WB.Document.GetElementById("village_map") == null) return;
             vills[TIB_LBV.SelectedIndex].type = WB.Document.GetElementById("village_map").GetAttribute("className");
             foreach (HtmlElement qwe in WB.Document.GetElementById("village_map").GetElementsByTagName("img"))
             {
@@ -647,7 +668,7 @@ namespace travwpf
                 Navigate(vills[TIB_LBV.SelectedIndex].href.Replace("dorf1","dorf2"));
         }
         #endregion
-        #region BUILDING
+        #region BUILDING AND DEMOLISH
         void mimg_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
@@ -965,6 +986,7 @@ namespace travwpf
             ITL.Visibility = System.Windows.Visibility.Visible;
             LabelTB.Visibility = System.Windows.Visibility.Visible;
             BuildTaskTimer.Interval = 500;
+            BuildTimerStop = false;
             BuildTaskTimer.Start();
             BuildTimerStartButton.IsEnabled = false;
             BuildTaskDeleteButton.IsEnabled = false;
@@ -980,6 +1002,7 @@ namespace travwpf
                 LabelTB.Visibility = System.Windows.Visibility.Hidden;
             }
             BuildTaskTimer.Stop();
+            BuildTimerStop = true;
             BuildTimerStartButton.IsEnabled = true;
             BuildTaskDeleteButton.IsEnabled = true;
             BuildTaskDeleteAllButton.IsEnabled = true;
@@ -1017,6 +1040,7 @@ namespace travwpf
             ITL.Visibility = System.Windows.Visibility.Visible;
             LabelTB.Visibility = System.Windows.Visibility.Visible;
             DemolishTaskTimer.Interval = 500;
+            DemolishTimerStop = false;
             DemolishTaskTimer.Start();
             DemolishTimerStartButton.IsEnabled = false;
             DemolishTaskDeleteButton.IsEnabled = false;
@@ -1032,6 +1056,7 @@ namespace travwpf
                 LabelTB.Visibility = System.Windows.Visibility.Hidden;
             }
             DemolishTaskTimer.Stop();
+            DemolishTimerStop = true;
             DemolishTimerStartButton.IsEnabled = true;
             DemolishTaskDeleteButton.IsEnabled = true;
             DemolishTaskDeleteAllButton.IsEnabled = true;
@@ -1039,11 +1064,13 @@ namespace travwpf
         }
         private void DemolishTaskTimer_Tick(object sender, EventArgs e)
         {
-            DemolishFromTasklist();
+            if(!DemolishTimerStop)
+                DemolishFromTasklist();
         }
-        void BuildTaskTimer_Tick(object sender, EventArgs e)
+        private void BuildTaskTimer_Tick(object sender, EventArgs e)
         {
-            BuildFromTaskList();
+            if(!BuildTimerStop)
+                BuildFromTaskList();
         }
         public static void PerformClick(System.Windows.Controls.Button btn)
         {
@@ -1060,12 +1087,33 @@ namespace travwpf
             }
             if (WBUsed)
             {
+                BusyList[0] = 0;
                 BuildTaskTimer.Interval = 1000;
                 BuildTaskTimer.Start();
                 return;
             }
+            else
+            {
+                if(BusyList[0] > 5)
+                {
+                    for(int i = 0;i<BusyList.Count;i++)
+                    {
+                        if(BusyList[i] == 0)
+                        {
+                            BusyList[0] = -1;
+                            BuildTaskTimer.Interval = 3000;
+                            BuildTaskTimer.Start();
+                            return;
+                        }
+                    }
+                }
+            }
+            if (BusyList[0] == -1)
+                BusyList[0] = 1;
+            else
+                BusyList[0]++;
             WBUsed = true;
-            MWind.Title = "WebBrowser busy(Build)";
+            MWind.Title = "WebBrowser busy(Build)" + BusyList[0];
             if(lasttasksuccess)
             {
                 lasttasksuccess = false;
@@ -1188,13 +1236,34 @@ namespace travwpf
             }
             if (WBUsed)
             {
+                BusyList[1] = 0;
                 DemolishTaskTimer.Interval = 1000;
                 DemolishTaskTimer.Start();
                 return;
+            } 
+            else
+            {
+                if (BusyList[1] > 5)
+                {
+                    for (int i = 0; i < BusyList.Count; i++)
+                    {
+                        if (BusyList[i] == 0)
+                        {
+                            BusyList[1] = -1;
+                            BuildTaskTimer.Interval = 3000;
+                            BuildTaskTimer.Start();
+                            return;
+                        }
+                    }
+                }
             }
+            if (BusyList[1] == -1)
+                BusyList[1] = 1;
+            else
+                BusyList[1]++;
             WBUsed = true;
             bool taskcomplete = false;
-            MWind.Title = "WebBrowser busy(Demolish)";
+            MWind.Title = "WebBrowser busy(Demolish)" + BusyList[1];
             bool MBFind = false;
             for(int i = 0;i<vills.Count;i++)
             {
@@ -1294,31 +1363,56 @@ namespace travwpf
             DemolishTaskTimer.Start();
         }
         #endregion
-        private void TC_main_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        #region WARIOR UPGRADE
+        void AddVill(int num)
         {
-            //switch(TC_main.SelectedIndex)
-            //{
-            //    case 0:
-            //        {
-            //            //currMainTab = 0;
-            //        }
-            //        break;
-            //    case 1:
-            //        {
-            //           // if (currMainTab == 1) break;
-            //            //currMainTab = 1;
-            //            //int lastusedvill = TIB_LBV.SelectedIndex;
-            //            //TIB_LBV.Items.Clear();
-            //            //for (int i = 0; i < vills.Count;i++)
-            //            //    TIB_LBV.Items.Add(vills[i].name);
-            //            //if (TIB_LBV.Items.Count > lastusedvill)
-            //            //    TIB_LBV.SelectedIndex = lastusedvill;
-            //            //else
-            //            //    TIB_LBV.SelectedIndex = 0;
-            //        }
-            //        break;
-            //}
+            bool g12 = false;
+            bool g13 = false;
+            for(int i = 0;i<vills[num].dorf2.Count;i++)
+            {
+                if (vills[num].dorf2[i].gid == "12")
+                    g12 = true;
+                if (vills[num].dorf2[i].gid == "13") 
+                    g13 = true;
+            }
+            if (g12 || g13)
+            {
+                bool exist = false;
+                for (int i = 0; i < UpgradeWarList.Count;i++)
+                    if (UpgradeWarList[i].villnum == num)
+                        exist = true;
+                if (!exist)
+                {
+                    UpgradeWarList.Add(new UpgradeWar { villnum = num, att = g12, def = g13 });
+                    TIOUWS.Items.Add(vills[num].name);
+                }
+            }
         }
+        private void AddSelectedVill(object sender, RoutedEventArgs e)
+        {
+            if(TIOUWALL.SelectedIndex != -1)
+                AddVill(TIOUWALL.SelectedIndex);
+        }
+        private void AddAllVill(object sender, RoutedEventArgs e)
+        {
+            if (TIOUWALL.SelectedIndex != -1)
+                for(int i = 0;i<vills.Count;i++)
+                    AddVill(i);
+        }
+        private void DeleteAllVill(object sender, RoutedEventArgs e)
+        {
+            UpgradeWarList.Clear();
+            TIOUWS.Items.Clear();
+        }
+        private void DeleteSelectedVill(object sender, RoutedEventArgs e)
+        {
+            if (TIOUWS.SelectedIndex != -1)
+            {
+                UpgradeWarList.RemoveAt(TIOUWS.SelectedIndex);
+                TIOUWS.Items.RemoveAt(TIOUWS.SelectedIndex);
+            }
+        }
+        #endregion
         #region GET INFO FUNCTIONS
         string GetGidFields(string VillType, int num)
         {
@@ -1449,6 +1543,32 @@ namespace travwpf
             return "ERR";
         }
         #endregion
+        #region OTHER
+        private void TC_main_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //switch(TC_main.SelectedIndex)
+            //{
+            //    case 0:
+            //        {
+            //            //currMainTab = 0;
+            //        }
+            //        break;
+            //    case 1:
+            //        {
+            //           // if (currMainTab == 1) break;
+            //            //currMainTab = 1;
+            //            //int lastusedvill = TIB_LBV.SelectedIndex;
+            //            //TIB_LBV.Items.Clear();
+            //            //for (int i = 0; i < vills.Count;i++)
+            //            //    TIB_LBV.Items.Add(vills[i].name);
+            //            //if (TIB_LBV.Items.Count > lastusedvill)
+            //            //    TIB_LBV.SelectedIndex = lastusedvill;
+            //            //else
+            //            //    TIB_LBV.SelectedIndex = 0;
+            //        }
+            //        break;
+            //}
+        }
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             Process.GetCurrentProcess().Kill();
@@ -1489,11 +1609,6 @@ namespace travwpf
                 WBHost.Visibility = System.Windows.Visibility.Visible;
             }
         }
-
-        
-
-
-
-
+        #endregion
     }
 }
