@@ -985,8 +985,6 @@ namespace travwpf
             BuildTaskDeleteAllButton.IsEnabled = true;
             BuildTimerStopButton.IsEnabled = false;
         }
-
-
         private void DemolishDeleteTaskButton_Click(object sender, RoutedEventArgs e)
         {
             if (DemolishTaskList.SelectedIndex == -1)
@@ -1039,8 +1037,6 @@ namespace travwpf
             DemolishTaskDeleteAllButton.IsEnabled = true;
             DemolishTimerStopButton.IsEnabled = false;
         }
-
-
         private void DemolishTaskTimer_Tick(object sender, EventArgs e)
         {
             DemolishFromTasklist();
@@ -1069,7 +1065,7 @@ namespace travwpf
                 return;
             }
             WBUsed = true;
-            MWind.Title = "WebBrowser busy";
+            MWind.Title = "WebBrowser busy(Build)";
             if(lasttasksuccess)
             {
                 lasttasksuccess = false;
@@ -1192,13 +1188,13 @@ namespace travwpf
             }
             if (WBUsed)
             {
-                DemolishTaskTimer.Interval = 3000;
+                DemolishTaskTimer.Interval = 1000;
                 DemolishTaskTimer.Start();
                 return;
             }
-            bool taskcomplete = false;
             WBUsed = true;
-            MWind.Title = "WebBrowser busy";
+            bool taskcomplete = false;
+            MWind.Title = "WebBrowser busy(Demolish)";
             bool MBFind = false;
             for(int i = 0;i<vills.Count;i++)
             {
@@ -1233,11 +1229,11 @@ namespace travwpf
             }
             if (!MBFind)
             {
+                WBUsed = false;
                 LDT.Clear();
                 DemolishTaskList.Items.Clear();
                 Properties.Settings.Default.DemolishTask = "";
                 Properties.Settings.Default.Save();
-                WBUsed = false;
                 MWind.Title = "";
                 System.Windows.MessageBox.Show("Главное здание не найдено");
                 return;
@@ -1246,8 +1242,8 @@ namespace travwpf
             {
                 if(WB.Document.GetElementsByTagName("form").Count == 0)
                 {
-                    DemolishTaskTimer.Interval = 3000;
                     WBUsed = false;
+                    DemolishTaskTimer.Interval = 3000;
                     MWind.Title = "";
                     DemolishTaskTimer.Start();
                     return;

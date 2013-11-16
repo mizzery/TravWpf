@@ -1,11 +1,12 @@
-﻿<Window x:Class="travwpf.MainWindow"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
-        Height="1080" Width="1920" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen" Closing="Window_Closing" Name="MWind">
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="travwpf.MainWindow"
+        Height="1080" Width="1920" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen" Closing="Window_Closing" x:Name="MWind">
     <Grid>
-        <TabControl SelectionChanged="TC_main_SelectionChanged" Name="TC_main">
-            <TabItem Header="Браузер" Name="TI_WB">
+        <TabControl SelectionChanged="TC_main_SelectionChanged" x:Name="TC_main">
+            <TabItem Header="Браузер" x:Name="TI_WB">
                 <Grid>
                     <WindowsFormsHost x:Name="WBHost" Margin="0,24,0,0">
                         <wf:WebBrowser x:Name="WB"/>
@@ -13,98 +14,104 @@
                     <WindowsFormsHost x:Name="WBHost1" Visibility="Hidden" Margin="0,24,0,0">
                         <wf:WebBrowser x:Name="WB1" Visible="False"/>
                     </WindowsFormsHost>
-                    <TextBox HorizontalAlignment="Left" Height="24" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="700" Name="WBADDR" FontSize="15" IsReadOnly="True" Margin="24,-1,0,0"/>
-                    <Image RenderOptions.BitmapScalingMode="HighQuality" HorizontalAlignment="Left" Height="24" VerticalAlignment="Top" Width="24" Name="WBL" Stretch="Fill"/>
-                    <Image Name="WBB" RenderOptions.BitmapScalingMode="HighQuality" HorizontalAlignment="Left" Height="24" VerticalAlignment="Top" Width="24" Stretch="Fill" Margin="731,0,0,0" Source="images//arrf"/>
-                    <Image Name="WBF" RenderOptions.BitmapScalingMode="HighQuality" HorizontalAlignment="Left" Height="24" VerticalAlignment="Top" Width="24" Stretch="Fill" Margin="762,0,0,0" Source="images//arrb"/>
-                    <CheckBox Checked="CHBPWB_Checked" Name="CHBPWB" Content="Простой браузер" Margin="820,-1,0,0" Width="128" Height="24" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="CHBPWB_Click"/>
+                    <TextBox HorizontalAlignment="Left" Height="24" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="700" x:Name="WBADDR" FontSize="15" IsReadOnly="True" Margin="24,-1,0,0"/>
+                    <Image RenderOptions.BitmapScalingMode="HighQuality" HorizontalAlignment="Left" Height="24" VerticalAlignment="Top" Width="24" x:Name="WBL" Stretch="Fill"/>
+                    <Image x:Name="WBB" RenderOptions.BitmapScalingMode="HighQuality" HorizontalAlignment="Left" Height="24" VerticalAlignment="Top" Width="24" Stretch="Fill" Margin="731,0,0,0" Source="images//arrf"/>
+                    <Image x:Name="WBF" RenderOptions.BitmapScalingMode="HighQuality" HorizontalAlignment="Left" Height="24" VerticalAlignment="Top" Width="24" Stretch="Fill" Margin="762,0,0,0" Source="images//arrb"/>
+                    <CheckBox Checked="CHBPWB_Checked" x:Name="CHBPWB" Content="Простой браузер" Margin="820,-1,0,0" Width="128" Height="24" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="CHBPWB_Click"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="Постройки" Name="TI_Builds">
-                <Grid Name="TIB_MG">
-                    <Image HorizontalAlignment="Left" VerticalAlignment="Top" Margin="300,0,0,0" Width="540" Height="448" Source="images//bg0" Name="TIB_ID2"/>
-                    <Image HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0" Width="300" Height="264" Source="images//f3" Name="TIB_ID1"/>
+            <TabItem Header="Постройки" x:Name="TI_Builds">
+                <Grid x:Name="TIB_MG">
+                    <Image HorizontalAlignment="Left" VerticalAlignment="Top" Margin="300,0,0,0" Width="540" Height="448" Source="images//bg0" x:Name="TIB_ID2"/>
+                    <Image HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0" Width="300" Height="264" Source="images//f3" x:Name="TIB_ID1"/>
                     <WindowsFormsHost x:Name="LBhost" Margin="840,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="221" Height="305">
                         <wf:ListBox x:Name="TIB_LBV" SelectedIndexChanged="TIB_LBV_SelectedIndexChanged" BorderStyle="FixedSingle"/>
                     </WindowsFormsHost>
-                    <Image Name="ID2_I3" HorizontalAlignment="Left" Height="100" Margin="560,18,0,0" VerticalAlignment="Top" Width="75" Source="images//iso"/>
-                    <Image Name="ID2_I2" HorizontalAlignment="Left" Height="100" Margin="498,28,0,0" VerticalAlignment="Top" Width="75" Source="images//iso"/>
-                    <Image Name="ID2_I1" HorizontalAlignment="Left" Height="100" Margin="413,54,0,0" VerticalAlignment="Top" Width="75" Source="images//iso"/>
-                    <Image Name="ID2_I4" HorizontalAlignment="Left" Height="100" Margin="636,31,0,0" VerticalAlignment="Top" Width="75" Source="images//iso"/>
-                    <Image Name="ID2_I5" HorizontalAlignment="Left" Height="100" Margin="692,80,0,0" VerticalAlignment="Top" Width="75" Source="images//iso"/>
-                    <Image Name="ID2_I6" HorizontalAlignment="Left" Height="100" Margin="376,93,0,0" VerticalAlignment="Top" Width="75" Source="images//iso"/>
-                    <Image Name="ID2_I9" HorizontalAlignment="Left" Height="100" Margin="698,120,0,0" VerticalAlignment="Top" Width="75" Source="images//iso"/>
-                    <Image Name="ID2_I7" HorizontalAlignment="Left" Height="100" Margin="465,100,0,0" VerticalAlignment="Top" Width="75" Source="images//iso"/>
-                    <Image Name="ID2_I8" HorizontalAlignment="Left" Height="100" Margin="549,86,0,0" VerticalAlignment="Top" Width="75" Source="images//iso"/>
-                    <Image Name="ID2_I11" HorizontalAlignment="Left" Height="100" Margin="492,130,0,0" VerticalAlignment="Top" Width="75" Source="images//iso"/>
-                    <Image Name="ID2_I12" HorizontalAlignment="Left" Height="100" Margin="455,155,0,0" VerticalAlignment="Top" Width="75" Source="images//iso"/>
-                    <Image Name="ID2_I10" HorizontalAlignment="Left" Height="100" Margin="368,161,0,0" VerticalAlignment="Top" Width="75" Source="images//iso"/>
-                    <Image Name="ID2_I14" HorizontalAlignment="Left" Height="100" Margin="385,200,0,0" VerticalAlignment="Top" Width="75" Source="images//iso"/>
-                    <Image Name="ID2_I13" HorizontalAlignment="Left" Height="100" Margin="705,179,0,0" VerticalAlignment="Top" Width="75" Source="images//iso"/>
-                    <Image Name="ID2_I16" HorizontalAlignment="Left" Height="100" Margin="659,212,0,0" VerticalAlignment="Top" Width="75" Source="images//iso"/>
-                    <Image Name="ID2_I15" HorizontalAlignment="Left" Height="100" Margin="530,198,0,0" VerticalAlignment="Top" Width="75" Source="images//iso"/>
-                    <Image Name="ID2_I17" HorizontalAlignment="Left" Height="100" Margin="460,238,0,0" VerticalAlignment="Top" Width="75" Source="images//iso"/>
-                    <Image Name="ID2_I19" HorizontalAlignment="Left" Height="100" Margin="444,270,0,0" VerticalAlignment="Top" Width="75" Source="images//iso"/>
-                    <Image Name="ID2_I18" HorizontalAlignment="Left" Height="100" Margin="587,248,0,0" VerticalAlignment="Top" Width="75" Source="images//iso"/>
-                    <Image Name="ID2_I20" HorizontalAlignment="Left" Height="100" Margin="566,280,0,0" VerticalAlignment="Top" Width="75" Source="images//iso"/>
-                    <Image Name="ID2_I21" HorizontalAlignment="Left" Height="120" Margin="616,161,0,0" VerticalAlignment="Top" Width="68" Source="images//g16"/>
-                    <Grid HorizontalAlignment="Left" Height="448" Margin="300,0,0,0" VerticalAlignment="Top" Width="540" Name="ID2SPLIT"/>
-                    <Grid Name="ID2_L19" HorizontalAlignment="Left" Height="32" Margin="449,331,0,0" VerticalAlignment="Top" Width="64"/>
-                    <Grid Name="ID2_L17" HorizontalAlignment="Left" Height="32" Margin="465,299,0,0" VerticalAlignment="Top" Width="64"/>
-                    <Grid Name="ID2_L20" HorizontalAlignment="Left" Height="32" Margin="572,342,0,0" VerticalAlignment="Top" Width="64"/>
-                    <Grid Name="ID2_L18" HorizontalAlignment="Left" Height="32" Margin="592,309,0,0" VerticalAlignment="Top" Width="64"/>
-                    <Grid Name="ID2_L16" HorizontalAlignment="Left" Height="32" Margin="664,274,0,0" VerticalAlignment="Top" Width="64"/>
-                    <Grid Name="ID2_L15" HorizontalAlignment="Left" Height="32" Margin="535,259,0,0" VerticalAlignment="Top" Width="64"/>
-                    <Grid Name="ID2_L14" HorizontalAlignment="Left" Height="32" Margin="392,261,0,0" VerticalAlignment="Top" Width="64"/>
-                    <Grid Name="ID2_L10" HorizontalAlignment="Left" Height="32" Margin="374,222,0,0" VerticalAlignment="Top" Width="64"/>
-                    <Grid Name="ID2_L12" HorizontalAlignment="Left" Height="32" Margin="455,220,0,0" VerticalAlignment="Top" Width="64"/>
-                    <Grid Name="ID2_L11" HorizontalAlignment="Left" Height="32" Margin="503,191,0,0" VerticalAlignment="Top" Width="64"/>
-                    <Grid Name="ID2_L7" HorizontalAlignment="Left" Height="32" Margin="470,158,0,0" VerticalAlignment="Top" Width="64"/>
-                    <Grid Name="ID2_L6" HorizontalAlignment="Left" Height="32" Margin="380,154,0,0" VerticalAlignment="Top" Width="64"/>
-                    <Grid Name="ID2_L1" HorizontalAlignment="Left" Height="32" Margin="419,116,0,0" VerticalAlignment="Top" Width="64"/>
-                    <Grid Name="ID2_L2" HorizontalAlignment="Left" Height="32" Margin="500,91,0,0" VerticalAlignment="Top" Width="64"/>
-                    <Grid Name="ID2_L3" HorizontalAlignment="Left" Height="32" Margin="570,79,0,0" VerticalAlignment="Top" Width="64"/>
-                    <Grid Name="ID2_L4" HorizontalAlignment="Left" Height="32" Margin="641,92,0,0" VerticalAlignment="Top" Width="64"/>
-                    <Grid Name="ID2_L8" HorizontalAlignment="Left" Height="32" Margin="558,143,0,0" VerticalAlignment="Top" Width="64"/>
-                    <Grid Name="ID2_L5" HorizontalAlignment="Left" Height="32" Margin="698,141,0,0" VerticalAlignment="Top" Width="64"/>
-                    <Grid Name="ID2_L9" HorizontalAlignment="Left" Height="32" Margin="704,182,0,0" VerticalAlignment="Top" Width="64"/>
-                    <Grid Name="ID2_L13" HorizontalAlignment="Left" Height="32" Margin="710,240,0,0" VerticalAlignment="Top" Width="64"/>
-                    <Grid Name="ID2_L21"  HorizontalAlignment="Left" Height="80" Margin="627,188,0,0" VerticalAlignment="Top" Width="50"/>
-                    <Label Name="ID1_L1"  HorizontalAlignment="Left" Margin="83,13,0,0" VerticalAlignment="Top" Width="36" Height="36" Padding="0" FontSize="15" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                    <Label Name="ID1_L2"  HorizontalAlignment="Left" Margin="146,13,0,0" VerticalAlignment="Top" Width="36" Height="36" Padding="0" FontSize="15" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                    <Label Name="ID1_L3"  HorizontalAlignment="Left" Margin="206,27,0,0" VerticalAlignment="Top" Width="36" Height="36" Padding="0" FontSize="15" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                    <Label Name="ID1_L4"  HorizontalAlignment="Left" Margin="28,45,0,0" VerticalAlignment="Top" Width="36" Height="36" Padding="0" FontSize="15" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                    <Label Name="ID1_L5"  HorizontalAlignment="Left" Margin="120,54,0,0" VerticalAlignment="Top" Width="36" Height="36" Padding="0" FontSize="15" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                    <Label Name="ID1_L6"  HorizontalAlignment="Left" Margin="185,74,0,0" VerticalAlignment="Top" Width="36" Height="36" Padding="0" FontSize="15" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                    <Label Name="ID1_L7"  HorizontalAlignment="Left" Margin="243,67,0,0" VerticalAlignment="Top" Width="36" Height="36" Padding="0" FontSize="15" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                    <Label Name="ID1_L8"  HorizontalAlignment="Left" Margin="13,98,0,0" VerticalAlignment="Top" Width="36" Height="36" Padding="0" FontSize="15" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                    <Label Name="ID1_L9"  HorizontalAlignment="Left" Margin="64,91,0,0" VerticalAlignment="Top" Width="36" Height="36" Padding="0" FontSize="15" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                    <Label Name="ID1_L10" HorizontalAlignment="Left" Margin="195,122,0,0" VerticalAlignment="Top" Width="36" Height="36" Padding="0" FontSize="15" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                    <Label Name="ID1_L11" HorizontalAlignment="Left" Margin="250,125,0,0" VerticalAlignment="Top" Width="36" Height="36" Padding="0" FontSize="15" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                    <Label Name="ID1_L12" HorizontalAlignment="Left" Margin="23,151,0,0" VerticalAlignment="Top" Width="36" Height="36" Padding="0" FontSize="15" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                    <Label Name="ID1_L13" HorizontalAlignment="Left" Margin="74,144,0,0" VerticalAlignment="Top" Width="36" Height="36" Padding="0" FontSize="15" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                    <Label Name="ID1_L14" HorizontalAlignment="Left" Margin="141,164,0,0" VerticalAlignment="Top" Width="36" Height="36" Padding="0" FontSize="15" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                    <Label Name="ID1_L15" HorizontalAlignment="Left" Margin="220,179,0,0" VerticalAlignment="Top" Width="36" Height="36" Padding="0" FontSize="15" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                    <Label Name="ID1_L16" HorizontalAlignment="Left" Margin="69,197,0,0" VerticalAlignment="Top" Width="36" Height="36" Padding="0" FontSize="15" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                    <Label Name="ID1_L17" HorizontalAlignment="Left" Margin="122,209,0,0" VerticalAlignment="Top" Width="36" Height="36" Padding="0" FontSize="15" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                    <Label Name="ID1_L18" HorizontalAlignment="Left" Margin="172,213,0,0" VerticalAlignment="Top" Width="36" Height="36" Padding="0" FontSize="15" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                    <Image MouseDown="ID1_R_MouseDown" MouseEnter="LD1_MouseEnter" MouseLeave="LD1_MouseLeave" Name="ID1_R" HorizontalAlignment="Left" Height="32" Margin="0,0,0,0" VerticalAlignment="Top" Width="32" Source="images//ref"/>
-                    <Image MouseDown="ID2_R_MouseDown" MouseEnter="LD1_MouseEnter" MouseLeave="LD1_MouseLeave" Name="ID2_R" HorizontalAlignment="Left" Height="32" Margin="808,416,0,0" VerticalAlignment="Top" Width="32" Source="images//ref"/>
-                    <ListView Margin="0,504,0,0" Name="BuildTaskList"/>
-                    <Button Name="BuildTimerStartButton" Content="Запустить" HorizontalAlignment="Left" Margin="0,480,0,0" VerticalAlignment="Top" Width="119" FontSize="15" FontWeight="Bold" Click="BuildStartTaskButton_Click"/>
-                    <Button Name="BuildTaskDeleteButton" Content="Удалить выбранное" HorizontalAlignment="Left" Margin="248,480,0,0" VerticalAlignment="Top" Width="156" FontSize="15" FontWeight="Bold" Click="BuildDeleteTaskButton_Click"/>
-                    <Button Name="BuildTimerStopButton" Content="Остановить" HorizontalAlignment="Left" Margin="124,480,0,0" VerticalAlignment="Top" Width="119" FontSize="15" FontWeight="Bold" Click="BuildStopTaskButton_Click"/>
-                    <Button Name="BuildTaskDeleteAllButton" Content="Удалить все" HorizontalAlignment="Left" Margin="409,480,0,0" VerticalAlignment="Top" Width="156" FontSize="15" FontWeight="Bold" Click="BuildDeleteAllTaskButton_Click"/>
-                    <ListView Margin="1061,0,0,0" Name="DemolishTaskList" Height="504" VerticalAlignment="Top"/>
-                    <Button Name="DemolishTimerStartButton" Content="Запустить" HorizontalAlignment="Left" Margin="845,305,0,0" VerticalAlignment="Top" Width="216" FontSize="15" FontWeight="Bold" Click="DemolishStartTaskButton_Click"/>
-                    <Button Name="DemolishTimerStopButton" Content="Остановить" HorizontalAlignment="Left" Margin="845,334,0,0" VerticalAlignment="Top" Width="216" FontSize="15" FontWeight="Bold" Click="DemolishStopTaskButton_Click"/>
-                    <Button Name="DemolishTaskDeleteButton" Content="Удалить" HorizontalAlignment="Left" Margin="845,363,0,0" VerticalAlignment="Top" Width="216" FontSize="15" FontWeight="Bold" Click="DemolishDeleteTaskButton_Click"/>
-                    <Button Name="DemolishTaskDeleteAllButton" Content="Удалить все" HorizontalAlignment="Left" Margin="845,392,0,0" VerticalAlignment="Top" Width="216" FontSize="15" FontWeight="Bold" Click="DemolishDeleteAllTaskButton_Click"/>
+                    <Image x:Name="ID2_I3" HorizontalAlignment="Left" Height="100" Margin="560,18,0,0" VerticalAlignment="Top" Width="75" Source="images//iso"/>
+                    <Image x:Name="ID2_I2" HorizontalAlignment="Left" Height="100" Margin="498,28,0,0" VerticalAlignment="Top" Width="75" Source="images//iso"/>
+                    <Image x:Name="ID2_I1" HorizontalAlignment="Left" Height="100" Margin="413,54,0,0" VerticalAlignment="Top" Width="75" Source="images//iso"/>
+                    <Image x:Name="ID2_I4" HorizontalAlignment="Left" Height="100" Margin="636,31,0,0" VerticalAlignment="Top" Width="75" Source="images//iso"/>
+                    <Image x:Name="ID2_I5" HorizontalAlignment="Left" Height="100" Margin="692,80,0,0" VerticalAlignment="Top" Width="75" Source="images//iso"/>
+                    <Image x:Name="ID2_I6" HorizontalAlignment="Left" Height="100" Margin="376,93,0,0" VerticalAlignment="Top" Width="75" Source="images//iso"/>
+                    <Image x:Name="ID2_I9" HorizontalAlignment="Left" Height="100" Margin="698,120,0,0" VerticalAlignment="Top" Width="75" Source="images//iso"/>
+                    <Image x:Name="ID2_I7" HorizontalAlignment="Left" Height="100" Margin="465,100,0,0" VerticalAlignment="Top" Width="75" Source="images//iso"/>
+                    <Image x:Name="ID2_I8" HorizontalAlignment="Left" Height="100" Margin="549,86,0,0" VerticalAlignment="Top" Width="75" Source="images//iso"/>
+                    <Image x:Name="ID2_I11" HorizontalAlignment="Left" Height="100" Margin="492,130,0,0" VerticalAlignment="Top" Width="75" Source="images//iso"/>
+                    <Image x:Name="ID2_I12" HorizontalAlignment="Left" Height="100" Margin="455,155,0,0" VerticalAlignment="Top" Width="75" Source="images//iso"/>
+                    <Image x:Name="ID2_I10" HorizontalAlignment="Left" Height="100" Margin="368,161,0,0" VerticalAlignment="Top" Width="75" Source="images//iso"/>
+                    <Image x:Name="ID2_I14" HorizontalAlignment="Left" Height="100" Margin="385,200,0,0" VerticalAlignment="Top" Width="75" Source="images//iso"/>
+                    <Image x:Name="ID2_I13" HorizontalAlignment="Left" Height="100" Margin="705,179,0,0" VerticalAlignment="Top" Width="75" Source="images//iso"/>
+                    <Image x:Name="ID2_I16" HorizontalAlignment="Left" Height="100" Margin="659,212,0,0" VerticalAlignment="Top" Width="75" Source="images//iso"/>
+                    <Image x:Name="ID2_I15" HorizontalAlignment="Left" Height="100" Margin="530,198,0,0" VerticalAlignment="Top" Width="75" Source="images//iso"/>
+                    <Image x:Name="ID2_I17" HorizontalAlignment="Left" Height="100" Margin="460,238,0,0" VerticalAlignment="Top" Width="75" Source="images//iso"/>
+                    <Image x:Name="ID2_I19" HorizontalAlignment="Left" Height="100" Margin="444,270,0,0" VerticalAlignment="Top" Width="75" Source="images//iso"/>
+                    <Image x:Name="ID2_I18" HorizontalAlignment="Left" Height="100" Margin="587,248,0,0" VerticalAlignment="Top" Width="75" Source="images//iso"/>
+                    <Image x:Name="ID2_I20" HorizontalAlignment="Left" Height="100" Margin="566,280,0,0" VerticalAlignment="Top" Width="75" Source="images//iso"/>
+                    <Image x:Name="ID2_I21" HorizontalAlignment="Left" Height="120" Margin="616,161,0,0" VerticalAlignment="Top" Width="68" Source="images//g16"/>
+                    <Grid HorizontalAlignment="Left" Height="448" Margin="300,0,0,0" VerticalAlignment="Top" Width="540" x:Name="ID2SPLIT"/>
+                    <Grid x:Name="ID2_L19" HorizontalAlignment="Left" Height="32" Margin="449,331,0,0" VerticalAlignment="Top" Width="64"/>
+                    <Grid x:Name="ID2_L17" HorizontalAlignment="Left" Height="32" Margin="465,299,0,0" VerticalAlignment="Top" Width="64"/>
+                    <Grid x:Name="ID2_L20" HorizontalAlignment="Left" Height="32" Margin="572,342,0,0" VerticalAlignment="Top" Width="64"/>
+                    <Grid x:Name="ID2_L18" HorizontalAlignment="Left" Height="32" Margin="592,309,0,0" VerticalAlignment="Top" Width="64"/>
+                    <Grid x:Name="ID2_L16" HorizontalAlignment="Left" Height="32" Margin="664,274,0,0" VerticalAlignment="Top" Width="64"/>
+                    <Grid x:Name="ID2_L15" HorizontalAlignment="Left" Height="32" Margin="535,259,0,0" VerticalAlignment="Top" Width="64"/>
+                    <Grid x:Name="ID2_L14" HorizontalAlignment="Left" Height="32" Margin="392,261,0,0" VerticalAlignment="Top" Width="64"/>
+                    <Grid x:Name="ID2_L10" HorizontalAlignment="Left" Height="32" Margin="374,222,0,0" VerticalAlignment="Top" Width="64"/>
+                    <Grid x:Name="ID2_L12" HorizontalAlignment="Left" Height="32" Margin="455,220,0,0" VerticalAlignment="Top" Width="64"/>
+                    <Grid x:Name="ID2_L11" HorizontalAlignment="Left" Height="32" Margin="503,191,0,0" VerticalAlignment="Top" Width="64"/>
+                    <Grid x:Name="ID2_L7" HorizontalAlignment="Left" Height="32" Margin="470,158,0,0" VerticalAlignment="Top" Width="64"/>
+                    <Grid x:Name="ID2_L6" HorizontalAlignment="Left" Height="32" Margin="380,154,0,0" VerticalAlignment="Top" Width="64"/>
+                    <Grid x:Name="ID2_L1" HorizontalAlignment="Left" Height="32" Margin="419,116,0,0" VerticalAlignment="Top" Width="64"/>
+                    <Grid x:Name="ID2_L2" HorizontalAlignment="Left" Height="32" Margin="500,91,0,0" VerticalAlignment="Top" Width="64"/>
+                    <Grid x:Name="ID2_L3" HorizontalAlignment="Left" Height="32" Margin="570,79,0,0" VerticalAlignment="Top" Width="64"/>
+                    <Grid x:Name="ID2_L4" HorizontalAlignment="Left" Height="32" Margin="641,92,0,0" VerticalAlignment="Top" Width="64"/>
+                    <Grid x:Name="ID2_L8" HorizontalAlignment="Left" Height="32" Margin="558,143,0,0" VerticalAlignment="Top" Width="64"/>
+                    <Grid x:Name="ID2_L5" HorizontalAlignment="Left" Height="32" Margin="698,141,0,0" VerticalAlignment="Top" Width="64"/>
+                    <Grid x:Name="ID2_L9" HorizontalAlignment="Left" Height="32" Margin="704,182,0,0" VerticalAlignment="Top" Width="64"/>
+                    <Grid x:Name="ID2_L13" HorizontalAlignment="Left" Height="32" Margin="710,240,0,0" VerticalAlignment="Top" Width="64"/>
+                    <Grid x:Name="ID2_L21"  HorizontalAlignment="Left" Height="80" Margin="627,188,0,0" VerticalAlignment="Top" Width="50"/>
+                    <Label x:Name="ID1_L1"  HorizontalAlignment="Left" Margin="83,13,0,0" VerticalAlignment="Top" Width="36" Height="36" Padding="0" FontSize="15" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                    <Label x:Name="ID1_L2"  HorizontalAlignment="Left" Margin="146,13,0,0" VerticalAlignment="Top" Width="36" Height="36" Padding="0" FontSize="15" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                    <Label x:Name="ID1_L3"  HorizontalAlignment="Left" Margin="206,27,0,0" VerticalAlignment="Top" Width="36" Height="36" Padding="0" FontSize="15" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                    <Label x:Name="ID1_L4"  HorizontalAlignment="Left" Margin="28,45,0,0" VerticalAlignment="Top" Width="36" Height="36" Padding="0" FontSize="15" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                    <Label x:Name="ID1_L5"  HorizontalAlignment="Left" Margin="120,54,0,0" VerticalAlignment="Top" Width="36" Height="36" Padding="0" FontSize="15" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                    <Label x:Name="ID1_L6"  HorizontalAlignment="Left" Margin="185,74,0,0" VerticalAlignment="Top" Width="36" Height="36" Padding="0" FontSize="15" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                    <Label x:Name="ID1_L7"  HorizontalAlignment="Left" Margin="243,67,0,0" VerticalAlignment="Top" Width="36" Height="36" Padding="0" FontSize="15" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                    <Label x:Name="ID1_L8"  HorizontalAlignment="Left" Margin="13,98,0,0" VerticalAlignment="Top" Width="36" Height="36" Padding="0" FontSize="15" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                    <Label x:Name="ID1_L9"  HorizontalAlignment="Left" Margin="64,91,0,0" VerticalAlignment="Top" Width="36" Height="36" Padding="0" FontSize="15" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                    <Label x:Name="ID1_L10" HorizontalAlignment="Left" Margin="195,122,0,0" VerticalAlignment="Top" Width="36" Height="36" Padding="0" FontSize="15" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                    <Label x:Name="ID1_L11" HorizontalAlignment="Left" Margin="250,125,0,0" VerticalAlignment="Top" Width="36" Height="36" Padding="0" FontSize="15" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                    <Label x:Name="ID1_L12" HorizontalAlignment="Left" Margin="23,151,0,0" VerticalAlignment="Top" Width="36" Height="36" Padding="0" FontSize="15" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                    <Label x:Name="ID1_L13" HorizontalAlignment="Left" Margin="74,144,0,0" VerticalAlignment="Top" Width="36" Height="36" Padding="0" FontSize="15" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                    <Label x:Name="ID1_L14" HorizontalAlignment="Left" Margin="141,164,0,0" VerticalAlignment="Top" Width="36" Height="36" Padding="0" FontSize="15" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                    <Label x:Name="ID1_L15" HorizontalAlignment="Left" Margin="220,179,0,0" VerticalAlignment="Top" Width="36" Height="36" Padding="0" FontSize="15" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                    <Label x:Name="ID1_L16" HorizontalAlignment="Left" Margin="69,197,0,0" VerticalAlignment="Top" Width="36" Height="36" Padding="0" FontSize="15" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                    <Label x:Name="ID1_L17" HorizontalAlignment="Left" Margin="122,209,0,0" VerticalAlignment="Top" Width="36" Height="36" Padding="0" FontSize="15" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                    <Label x:Name="ID1_L18" HorizontalAlignment="Left" Margin="172,213,0,0" VerticalAlignment="Top" Width="36" Height="36" Padding="0" FontSize="15" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                    <Image MouseDown="ID1_R_MouseDown" MouseEnter="LD1_MouseEnter" MouseLeave="LD1_MouseLeave" x:Name="ID1_R" HorizontalAlignment="Left" Height="32" Margin="0,0,0,0" VerticalAlignment="Top" Width="32" Source="images//ref"/>
+                    <Image MouseDown="ID2_R_MouseDown" MouseEnter="LD1_MouseEnter" MouseLeave="LD1_MouseLeave" x:Name="ID2_R" HorizontalAlignment="Left" Height="32" Margin="808,416,0,0" VerticalAlignment="Top" Width="32" Source="images//ref"/>
+                    <ListView Margin="0,504,0,0" x:Name="BuildTaskList"/>
+                    <Button x:Name="BuildTimerStartButton" Content="Запустить" HorizontalAlignment="Left" Margin="0,480,0,0" VerticalAlignment="Top" Width="119" FontSize="15" FontWeight="Bold" Click="BuildStartTaskButton_Click"/>
+                    <Button x:Name="BuildTaskDeleteButton" Content="Удалить выбранное" HorizontalAlignment="Left" Margin="248,480,0,0" VerticalAlignment="Top" Width="156" FontSize="15" FontWeight="Bold" Click="BuildDeleteTaskButton_Click"/>
+                    <Button x:Name="BuildTimerStopButton" Content="Остановить" HorizontalAlignment="Left" Margin="124,480,0,0" VerticalAlignment="Top" Width="119" FontSize="15" FontWeight="Bold" Click="BuildStopTaskButton_Click"/>
+                    <Button x:Name="BuildTaskDeleteAllButton" Content="Удалить все" HorizontalAlignment="Left" Margin="409,480,0,0" VerticalAlignment="Top" Width="156" FontSize="15" FontWeight="Bold" Click="BuildDeleteAllTaskButton_Click"/>
+                    <ListView Margin="1061,0,0,0" x:Name="DemolishTaskList" Height="504" VerticalAlignment="Top"/>
+                    <Button x:Name="DemolishTimerStartButton" Content="Запустить" HorizontalAlignment="Left" Margin="845,305,0,0" VerticalAlignment="Top" Width="216" FontSize="15" FontWeight="Bold" Click="DemolishStartTaskButton_Click"/>
+                    <Button x:Name="DemolishTimerStopButton" Content="Остановить" HorizontalAlignment="Left" Margin="845,334,0,0" VerticalAlignment="Top" Width="216" FontSize="15" FontWeight="Bold" Click="DemolishStopTaskButton_Click"/>
+                    <Button x:Name="DemolishTaskDeleteButton" Content="Удалить" HorizontalAlignment="Left" Margin="845,363,0,0" VerticalAlignment="Top" Width="216" FontSize="15" FontWeight="Bold" Click="DemolishDeleteTaskButton_Click"/>
+                    <Button x:Name="DemolishTaskDeleteAllButton" Content="Удалить все" HorizontalAlignment="Left" Margin="845,392,0,0" VerticalAlignment="Top" Width="216" FontSize="15" FontWeight="Bold" Click="DemolishDeleteAllTaskButton_Click"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Другое" x:Name="TI_Other">
+                <Grid Name="TIO_MG">
+                    <GroupBox Header="GroupBox" HorizontalAlignment="Left" VerticalAlignment="Top" Height="306" Width="389"/>
+
                 </Grid>
             </TabItem>
         </TabControl>
-        <Button Content="Инициализация аккаунта" Margin="0,0,0,0" HorizontalAlignment="Right" Width="155" Click="StartInitAcc_Click" Height="20" VerticalAlignment="Top" Name="StartInitAcc" Visibility="Hidden"/>
-        <Image RenderOptions.BitmapScalingMode="HighQuality" Height="24" VerticalAlignment="Top" Name="ITL" Stretch="Fill" Margin="0,-1,496,0" HorizontalAlignment="Right" Width="24"/>
-        <Label Content="Выполняются задания" Name="LabelTB" Margin="0,-1,249,0" Height="24" Padding="0" VerticalContentAlignment="Center" FontSize="15" FontWeight="Bold" VerticalAlignment="Top" HorizontalAlignment="Right" Width="247"/>
+        <Button Content="Инициализация аккаунта" Margin="0,0,0,0" HorizontalAlignment="Right" Width="155" Click="StartInitAcc_Click" Height="20" VerticalAlignment="Top" x:Name="StartInitAcc" Visibility="Hidden"/>
+        <Image RenderOptions.BitmapScalingMode="HighQuality" Height="24" VerticalAlignment="Top" x:Name="ITL" Stretch="Fill" Margin="0,-1,496,0" HorizontalAlignment="Right" Width="24"/>
+        <Label Content="Выполняются задания" x:Name="LabelTB" Margin="0,-1,249,0" Height="24" Padding="0" VerticalContentAlignment="Center" FontSize="15" FontWeight="Bold" VerticalAlignment="Top" HorizontalAlignment="Right" Width="247"/>
     </Grid>
 </Window>
