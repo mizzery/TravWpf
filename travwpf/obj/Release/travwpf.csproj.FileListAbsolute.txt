@@ -14,3 +14,4 @@ C:\Users\MIZERY\documents\visual studio 2013\Projects\travwpf\travwpf\obj\Releas
 C:\Users\MIZERY\documents\visual studio 2013\Projects\travwpf\travwpf\obj\Release\travwpf.csproj.GenerateResource.Cache
 C:\Users\MIZERY\documents\visual studio 2013\Projects\travwpf\travwpf\obj\Release\travwpf.exe
 C:\Users\MIZERY\documents\visual studio 2013\Projects\travwpf\travwpf\obj\Release\travwpf.pdb
+C:\Users\MIZERY\Documents\Visual Studio 2013\Projects\travwpf\travwpf\obj\Release\travwpf.csprojResolveAssemblyReference.cache
