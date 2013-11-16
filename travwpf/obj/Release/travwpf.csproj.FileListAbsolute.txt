@@ -1,0 +1,16 @@
+C:\Users\MIZERY\documents\visual studio 2013\Projects\travwpf\travwpf\bin\Release\travwpf.exe.config
+C:\Users\MIZERY\documents\visual studio 2013\Projects\travwpf\travwpf\bin\Release\travwpf.exe
+C:\Users\MIZERY\documents\visual studio 2013\Projects\travwpf\travwpf\bin\Release\travwpf.pdb
+C:\Users\MIZERY\documents\visual studio 2013\Projects\travwpf\travwpf\bin\Release\WpfAnimatedGif.dll
+C:\Users\MIZERY\documents\visual studio 2013\Projects\travwpf\travwpf\bin\Release\WpfAnimatedGif.xml
+C:\Users\MIZERY\documents\visual studio 2013\Projects\travwpf\travwpf\obj\Release\MainWindow.baml
+C:\Users\MIZERY\documents\visual studio 2013\Projects\travwpf\travwpf\obj\Release\Prox.baml
+C:\Users\MIZERY\documents\visual studio 2013\Projects\travwpf\travwpf\obj\Release\MainWindow.g.cs
+C:\Users\MIZERY\documents\visual studio 2013\Projects\travwpf\travwpf\obj\Release\Prox.g.cs
+C:\Users\MIZERY\documents\visual studio 2013\Projects\travwpf\travwpf\obj\Release\App.g.cs
+C:\Users\MIZERY\documents\visual studio 2013\Projects\travwpf\travwpf\obj\Release\travwpf_MarkupCompile.cache
+C:\Users\MIZERY\documents\visual studio 2013\Projects\travwpf\travwpf\obj\Release\travwpf.g.resources
+C:\Users\MIZERY\documents\visual studio 2013\Projects\travwpf\travwpf\obj\Release\travwpf.Properties.Resources.resources
+C:\Users\MIZERY\documents\visual studio 2013\Projects\travwpf\travwpf\obj\Release\travwpf.csproj.GenerateResource.Cache
+C:\Users\MIZERY\documents\visual studio 2013\Projects\travwpf\travwpf\obj\Release\travwpf.exe
+C:\Users\MIZERY\documents\visual studio 2013\Projects\travwpf\travwpf\obj\Release\travwpf.pdb

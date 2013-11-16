@@ -1,0 +1,17 @@
+c:\users\mizery\documents\visual studio 2013\Projects\travwpf\travwpf\bin\Debug\travwpf.exe.config
+C:\Users\MIZERY\Documents\Visual Studio 2013\Projects\travwpf\travwpf\obj\Debug\travwpf.csprojResolveAssemblyReference.cache
+C:\Users\MIZERY\Documents\Visual Studio 2013\Projects\travwpf\travwpf\obj\Debug\MainWindow.baml
+C:\Users\MIZERY\Documents\Visual Studio 2013\Projects\travwpf\travwpf\obj\Debug\MainWindow.g.cs
+C:\Users\MIZERY\Documents\Visual Studio 2013\Projects\travwpf\travwpf\obj\Debug\App.g.cs
+C:\Users\MIZERY\Documents\Visual Studio 2013\Projects\travwpf\travwpf\obj\Debug\travwpf_MarkupCompile.cache
+C:\Users\MIZERY\Documents\Visual Studio 2013\Projects\travwpf\travwpf\obj\Debug\travwpf.g.resources
+C:\Users\MIZERY\Documents\Visual Studio 2013\Projects\travwpf\travwpf\obj\Debug\travwpf.Properties.Resources.resources
+C:\Users\MIZERY\Documents\Visual Studio 2013\Projects\travwpf\travwpf\obj\Debug\travwpf.csproj.GenerateResource.Cache
+C:\Users\MIZERY\Documents\Visual Studio 2013\Projects\travwpf\travwpf\bin\Debug\travwpf.exe
+C:\Users\MIZERY\Documents\Visual Studio 2013\Projects\travwpf\travwpf\bin\Debug\travwpf.pdb
+C:\Users\MIZERY\Documents\Visual Studio 2013\Projects\travwpf\travwpf\obj\Debug\travwpf.exe
+C:\Users\MIZERY\Documents\Visual Studio 2013\Projects\travwpf\travwpf\obj\Debug\travwpf.pdb
+C:\Users\MIZERY\Documents\Visual Studio 2013\Projects\travwpf\travwpf\obj\Debug\Prox.baml
+C:\Users\MIZERY\Documents\Visual Studio 2013\Projects\travwpf\travwpf\obj\Debug\Prox.g.cs
+C:\Users\MIZERY\documents\visual studio 2013\Projects\travwpf\travwpf\bin\Debug\WpfAnimatedGif.dll
+C:\Users\MIZERY\documents\visual studio 2013\Projects\travwpf\travwpf\bin\Debug\WpfAnimatedGif.xml
