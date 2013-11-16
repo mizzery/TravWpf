@@ -117,6 +117,7 @@
                             <Button Content=">>" Click="AddAllVill" HorizontalAlignment="Left" Margin="250,37,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Padding="0" FontSize="20" FontWeight="Bold" Height="32" Width="32"/>
                             <Button Content="&#60;" Click="DeleteSelectedVill" HorizontalAlignment="Left" Margin="250,111,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Padding="0" FontSize="20" FontWeight="Bold" Height="32" Width="32"/>
                             <Button Content="&#60;&#60;" Click="DeleteAllVill" HorizontalAlignment="Left" Margin="250,74,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Padding="0" FontSize="20" FontWeight="Bold" Height="32" Width="32"/>
+                            <Button BorderBrush="#00000000" HorizontalAlignment="Left" Margin="250,414,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Padding="0" FontSize="20" FontWeight="Bold" Height="32" Width="32"/>
                         </Grid>
                     </GroupBox>
                 </Grid>
