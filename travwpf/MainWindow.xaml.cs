@@ -26,6 +26,7 @@ namespace travwpf
         List<int> BusyList = new List<int>();
         List<UpgradeWar> UpgradeWarList = new List<UpgradeWar>();
         Timer BuildTaskTimer = new Timer();
+        Timer UpgradeWarTimer = new Timer();
         Timer DemolishTaskTimer = new Timer();
         Timer AntiLogout = new Timer();
         bool DemolishTimerStop = false;
@@ -251,6 +252,8 @@ namespace travwpf
             DemolishTimerInit();
             AntiLogout.Tick += AntiLogout_Tick;
             AntiLogout.Interval = 300000;
+            UpgradeWarTimer.Interval = 5000;
+            UpgradeWarTimer.Tick += UpgradeWarTimer_Tick;
             TIB_LBV.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             Navigate(Server + "login.php");
         }
@@ -1387,6 +1390,53 @@ namespace travwpf
                     TIOUWS.Items.Add(vills[num].name);
                 }
             }
+        }
+        void UpgradeWarTimer_Tick(object sender, EventArgs e)
+        {
+            UpgradeWarTimer.Stop();
+            if (UpgradeWarList.Count == 0)
+            {
+                PerformClick(DemolishTimerStopButton);
+                System.Windows.MessageBox.Show("Все готово мой Господин!");
+                return;
+            }
+            if (WBUsed)
+            {
+                BusyList[2] = 0;
+                DemolishTaskTimer.Interval = 1000;
+                DemolishTaskTimer.Start();
+                return;
+            }
+            else
+            {
+                if (BusyList[2] > 5)
+                {
+                    for (int i = 0; i < BusyList.Count; i++)
+                    {
+                        if (BusyList[i] == 0)
+                        {
+                            BusyList[2] = -1;
+                            BuildTaskTimer.Interval = 5000;
+                            BuildTaskTimer.Start();
+                            return;
+                        }
+                    }
+                }
+            }
+            if (BusyList[2] == -1)
+                BusyList[2] = 1;
+            else
+                BusyList[2]++;
+            WBUsed = true;
+        }
+        void TIOUWIS_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            UpgradeWarTimer.Stop();
+
+        }
+        void TIOUWIP_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            UpgradeWarTimer.Start();
         }
         private void AddSelectedVill(object sender, RoutedEventArgs e)
         {

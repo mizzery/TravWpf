@@ -105,19 +105,21 @@
             </TabItem>
             <TabItem Header="Другое" x:Name="TI_Other">
                 <Grid Name="TIO_MG">
-                    <GroupBox Header="Улучшение войск" HorizontalAlignment="Left" VerticalAlignment="Top" Height="573" Width="607">
+                    <GroupBox Header="Улучшение войск" HorizontalAlignment="Left" VerticalAlignment="Top" Height="573" Width="642">
                         <Grid>
-                            <WindowsFormsHost x:Name="WFTIOUWALL" Margin="0,0,350,0">
+                            <WindowsFormsHost x:Name="WFTIOUWALL" HorizontalAlignment="Left" Width="245">
                                 <wf:ListBox x:Name="TIOUWALL"/>
                             </WindowsFormsHost>
-                            <WindowsFormsHost x:Name="WFTIOUWS" Margin="287,0,63,0">
+                            <WindowsFormsHost x:Name="WFTIOUWS" Margin="287,0,0,0" HorizontalAlignment="Left" Width="245">
                                 <wf:ListBox x:Name="TIOUWS"/>
                             </WindowsFormsHost>
                             <Button Content=">" Click="AddSelectedVill" HorizontalAlignment="Left" Margin="250,0,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Padding="0" FontSize="20" FontWeight="Bold" Height="32" Width="32"/>
                             <Button Content=">>" Click="AddAllVill" HorizontalAlignment="Left" Margin="250,37,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Padding="0" FontSize="20" FontWeight="Bold" Height="32" Width="32"/>
                             <Button Content="&#60;" Click="DeleteSelectedVill" HorizontalAlignment="Left" Margin="250,111,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Padding="0" FontSize="20" FontWeight="Bold" Height="32" Width="32"/>
                             <Button Content="&#60;&#60;" Click="DeleteAllVill" HorizontalAlignment="Left" Margin="250,74,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Padding="0" FontSize="20" FontWeight="Bold" Height="32" Width="32"/>
-                            <Button BorderBrush="#00000000" HorizontalAlignment="Left" Margin="250,414,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Padding="0" FontSize="20" FontWeight="Bold" Height="32" Width="32"/>
+
+                            <Button Name="UpgradeWarTimerStartButton" Content="Запустить" HorizontalAlignment="Left" Margin="537,5,0,0" VerticalAlignment="Top" Width="92" FontSize="15" FontWeight="Bold" Click="DemolishStartTaskButton_Click"/>
+                            <Button x:Name="UpgradeWarTimerStartButton_Copy" Content="Остановить" HorizontalAlignment="Left" Margin="537,34,0,0" VerticalAlignment="Top" Width="92" FontSize="15" FontWeight="Bold" Click="DemolishStartTaskButton_Click"/>
                         </Grid>
                     </GroupBox>
                 </Grid>
